@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable(); // por si se activa la opcion de verificar correo electronico
             $table->string('password');
-            $table->string('avatar');
+            //$table->string('avatar');
             $table->rememberToken();// se almacena un token y se inicia cada vez que el usario marca mantener iniciada la sesion
             $table->timestamps(); //create_at:la fecha y la hora de creacion del registro - update_at: fecha y hora de actualizacion
         });

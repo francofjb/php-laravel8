@@ -22,14 +22,9 @@ class CursoController extends Controller
         return view('cursos.create');
     }
 
-    public function show($curso){
+    public function show($id){
 
-        //return "METODOSHOW - Bienvenido al curso: $curso";
-        
-        
-        //return view('cursos.show', ['curso' => $curso]); // *se puede colocar de otra forma
-        //*
-        //compact ('curso'); es igual a ['curso' => $curso] entonces se puede escribir de la siguiente manera:
+        $curso = Curso::find($id);
         return view('cursos.show', compact('curso'));
     }
 }

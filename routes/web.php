@@ -22,14 +22,9 @@ Route::get('cursos/create', [CursoController::class, 'create'])->name('cursos.cr
 
 Route::post('cursos', [CursoController::class, 'store'])->name('cursos.store');
 
-
 Route::get('cursos/{id}', [CursoController::class, 'show'])->name('cursos.show');
 
-/* Route::get('cursos/{curso}/{categoria?}', function($curso, $categoria = null) {
-    $mensaje = "Bienvenido al curso: $curso";
-    if ($categoria){
-        $mensaje = "Bienvenido al curso $curso, de la categoria: $categoria";
-    }
-    return $mensaje;
-});
- */
+//Route::get('users/{id}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
+Route::get('users/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
+
+Route::put('cursos/{curso}', [CursoController::class , 'update'])->name('cursos.update');

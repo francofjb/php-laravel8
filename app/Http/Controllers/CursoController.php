@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCurso;
 use App\Models\Curso;
 use Illuminate\Http\Request;
 
@@ -21,38 +22,17 @@ class CursoController extends Controller
         return view('cursos.create');
     }
 
-    public function store(Request $request){
+    public function store(StoreCurso $request){
         
-        $request->validate([
-            'name' => 'required|max:10',
-            'descripcion' => 'required|min:10',
-            'categoria' => 'required'
-        ]);
+        $curso = Curso::create($request->all());
 
-        $curso = new Curso();
-        $curso->name = $request->name;
-        $curso->descripcion = $request->descripcion;
-        $curso->categoria = $request->categoria;
-        
-        $curso->save();
-        return redirect()->route('cursos.show', $curso->id);
+        return redirect()->route('cursos.show', $curso);
     }
-
-    public function show($id){
-
-        $curso = Curso::find($id);
+  
+    public function show(Curso $curso){
         return view('cursos.show', compact('curso'));
     }
-    // OTRA FORMA DE ESCRIBIR LA FUNCION "show()"
-    // public function show(Curso $curso){
-    //     return view('cursos.show', compact('curso'));
-    // }
-
-    // public function edit($id){
-    //     $curso = Curso::find($id);
-    //     return view('cursos.edit', compact($curso));
-    // }
-    // OTRA FORMA DE ESCRIBIR LA FUNCION "edit()"
+    
     public function edit(Curso $curso){
         //return $curso;
         return view('cursos.edit', compact('curso'));
@@ -66,12 +46,24 @@ class CursoController extends Controller
             'categoria' => 'required'
         ]);
 
-        $curso->name = $request->name;
-        $curso->descripcion = $request->descripcion;
-        $curso->categoria = $request->categoria;
-        
-        $curso->save();
+        $curso->update($request->all());
     
         return view('cursos.show', compact('curso'));
     }
+
+
+    // OTRA FORMA DE ESCRIBIR LA FUNCION "show()"
+    /*  public function show($curso){
+
+        $curso = Curso::find($id);
+        return view('cursos.show', compact('curso'));
+    } */
+
+
+    // public function edit($id){
+    //     $curso = Curso::find($id);
+    //     return view('cursos.edit', compact($curso));
+    // }
+    // OTRA FORMA DE ESCRIBIR LA FUNCION "edit()"
+
 }

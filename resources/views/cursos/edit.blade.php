@@ -19,7 +19,20 @@
             <small>*{{$message}}</small>
             <br>
         @enderror
+        {{--  ////////////////////////////////////////////////  --}}
+        <br>
+        <label>
+            Slug:
+            <br>
+            <input type="text" name="slug" value="{{old('slug',$curso->slug)}}">
+        </label>
 
+        @error('slug')
+            <br>
+            <small>*{{$message}}</small>
+            <br>
+        @enderror        
+        {{--  ////////////////////////////////////////////////  --}}
         <br>
         <label>
             Descripcion:

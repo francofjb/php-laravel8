@@ -13,12 +13,13 @@ class Curso extends Model
    // protected $table = "users"; 
   
    // arreglo con nombres de campos con permiso para ser agregados a la tabla.
-   protected $fillable = [
-       'name',
-       'descripcion',
-       'categoria'
-    ];
+   /* protected $fillable = ['name', 'descripcion', 'categoria']; */
     
     // arreglo con nombres de los campos protegidos de la tabla.
     protected $guarded = [];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
